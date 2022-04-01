@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Фрукты</string>
+    <string name="fruit_name">Название:</string>
+    <string name="fruit_description">Описание:</string>
+    <string name="add">Добавить</string>
+    <string name="delete">Удалить</string>
+    <string name="clear">Очистить</string>
+    <string name="edit">Редактировать</string>
+</resources>

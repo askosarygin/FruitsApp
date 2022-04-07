@@ -2,6 +2,7 @@ package com.example.fruitsapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -9,8 +10,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         fruitsDB = new FruitsDB();
         LayoutInflater inflater = getLayoutInflater();
-        fruitsRecyclerAdapter = new FruitsRecyclerAdapter(fruitsDB, inflater);
+        fruitsRecyclerAdapter = new FruitsRecyclerAdapter(fruitsDB, inflater, IMainActivity);
         RecyclerView recyclerView = findViewById(R.id.fruits_recycler_view);
         recyclerView.setAdapter(fruitsRecyclerAdapter);
     }
@@ -52,4 +51,11 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    FruitsRecyclerAdapter.IMainActivity IMainActivity = new FruitsRecyclerAdapter.IMainActivity() {
+        @Override
+        public ActionMode activateContextualMenu(FruitsRecyclerAdapter.ActionModeCallback actionModeCallback) {
+            return startSupportActionMode(actionModeCallback);
+        }
+    };
 }

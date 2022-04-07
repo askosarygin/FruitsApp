@@ -47,11 +47,11 @@ public class Fruit {
         this.avatarId = avatarId;
     }
 
-    public void setSelection() {
-        isSelected = true;
+    public void toggleSelection(boolean isSelected) {
+        this.isSelected = isSelected;
     }
 
-    public boolean getSelection() {
+    public boolean isSelected() {
         return isSelected;
     }
 }

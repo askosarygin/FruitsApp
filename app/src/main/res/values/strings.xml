@@ -6,4 +6,5 @@
     <string name="delete">Удалить</string>
     <string name="clear">Очистить</string>
     <string name="edit">Редактировать</string>
+    <string name="open_popup_menu">Открыть Popup меню</string>
 </resources>

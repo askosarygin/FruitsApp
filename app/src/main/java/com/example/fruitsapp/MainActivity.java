@@ -3,6 +3,7 @@ package com.example.fruitsapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         fruitsRecyclerAdapter = new FruitsRecyclerAdapter(fruitsDB, inflater, IMainActivity);
         RecyclerView recyclerView = findViewById(R.id.fruits_recycler_view);
         recyclerView.setAdapter(fruitsRecyclerAdapter);
+
+        Button popupButton = findViewById(R.id.button_open_popup);
+        popupButton.setOnClickListener(v -> showPopupMenu(popupButton));
     }
 
     @Override
@@ -37,25 +43,48 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.action_bar_add:
-            fruitsDB.addFruit("Новый фрукт", "Это новый фрукт", R.drawable.fruits);
-            fruitsRecyclerAdapter.notifyItemInserted(fruitsDB.getDBSize() + 1);
-            return true;
+                addNewFruit();
+                return true;
             case R.id.action_bar_clear:
-                for (int i = 0; i < fruitsDB.getDBSize(); i++) {
-                    fruitsRecyclerAdapter.notifyItemRemoved(0);
-                }
-                fruitsDB.clearDB();
+                clearFruits();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
-    FruitsRecyclerAdapter.IMainActivity IMainActivity = new FruitsRecyclerAdapter.IMainActivity() {
-        @Override
-        public ActionMode activateContextualMenu(FruitsRecyclerAdapter.ActionModeCallback actionModeCallback) {
-            return startSupportActionMode(actionModeCallback);
+    FruitsRecyclerAdapter.IMainActivity IMainActivity = actionModeCallback -> startSupportActionMode(actionModeCallback);
+
+    @SuppressLint("NonConstantResourceId")
+    public void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.popup_add:
+                    addNewFruit();
+                    return true;
+                case R.id.popup_clear:
+                    clearFruits();
+                    return true;
+                default:
+                    return false;
+            }
+        });
+        popupMenu.inflate(R.menu.popup_menu);
+        popupMenu.show();
+    }
+
+    public void addNewFruit() {
+        fruitsDB.addFruit("Новый фрукт", "Это новый фрукт", R.drawable.fruits);
+        fruitsRecyclerAdapter.notifyItemInserted(fruitsDB.getDBSize() + 1);
+    }
+
+    public void clearFruits() {
+        for (int i = 0; i < fruitsDB.getDBSize(); i++) {
+            fruitsRecyclerAdapter.notifyItemRemoved(0);
         }
-    };
+        fruitsDB.clearDB();
+    }
 }

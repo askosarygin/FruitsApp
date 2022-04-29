@@ -6,4 +6,19 @@
     <string name="delete">Удалить</string>
     <string name="clear">Очистить</string>
     <string name="edit">Редактировать</string>
+    <string name="open_popup_menu">Открыть Popup меню</string>
+
+    <string name="camera">Фото</string>
+    <string name="gallery">Галерея</string>
+    <string name="slideshow">Слайдшоу</string>
+    <string name="manage">Управлять</string>
+    <string name="share">Поделиться</string>
+    <string name="send">Отправить</string>
+    <string name="communicate">Коммуникация</string>
+    <string name="user">Пользователь</string>
+    <string name="email_example">fruit@fruits.com</string>
+    <string name="fruits">Фрукты</string>
+    
+    <string name="navigation_drawer_open">Navigation drawer open</string>
+    <string name="navigation_drawer_close">Navigation drawer close</string>
 </resources>

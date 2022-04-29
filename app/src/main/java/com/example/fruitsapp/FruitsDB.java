@@ -48,9 +48,21 @@ public class FruitsDB {
     }
 
     public void deleteSelectedFruits() {
+        List<Fruit> selectedFruits = new ArrayList<>();
         for (Fruit fruit : fruits) {
-            if (fruit.getSelection()) {
-                fruits.remove(fruit);
+            if (fruit.isSelected()) {
+                selectedFruits.add(fruit);
+            }
+        }
+        for (Fruit selectedFruit : selectedFruits) {
+            fruits.remove(selectedFruit);
+        }
+    }
+
+    public void clearSelectionFruits() {
+        for (Fruit fruit : fruits) {
+            if (fruit.isSelected()) {
+                fruit.toggleSelection(false);
             }
         }
     }

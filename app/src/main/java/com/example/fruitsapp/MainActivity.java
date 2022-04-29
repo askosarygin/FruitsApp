@@ -1,9 +1,12 @@
 package com.example.fruitsapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -32,6 +35,20 @@ public class MainActivity extends AppCompatActivity {
 
         Button popupButton = findViewById(R.id.button_open_popup);
         popupButton.setOnClickListener(v -> showPopupMenu(popupButton));
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                drawer,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        );
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
     @Override

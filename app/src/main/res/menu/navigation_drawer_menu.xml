@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fruits"
+        android:title="@string/fruits"
+        android:icon="@android:drawable/ic_menu_compass"/>
+    <item
+        android:id="@+id/navigation_drawer_camera"
+        android:title="@string/camera"
+        android:icon="@android:drawable/ic_menu_camera"/>
+    <item
+        android:id="@+id/navigation_drawer_gallery"
+        android:title="@string/gallery"
+        android:icon="@android:drawable/ic_menu_gallery"/>
+    <item
+        android:id="@+id/navigation_drawer_slideshow"
+        android:title="@string/slideshow"
+        android:icon="@android:drawable/ic_menu_slideshow"/>
+    <item
+        android:id="@+id/navigation_drawer_manage"
+        android:title="@string/manage"
+        android:icon="@android:drawable/ic_menu_manage"/>
+    <item android:title="@string/communicate">
+        <menu>
+            <item
+                android:id="@+id/navigation_drawer_share"
+                android:title="@string/share"
+                android:icon="@android:drawable/ic_menu_share"/>
+            <item
+                android:id="@+id/navigation_drawer_send"
+                android:title="@string/send"
+                android:icon="@android:drawable/ic_menu_send"/>
+        </menu>
+    </item>
+</menu>
